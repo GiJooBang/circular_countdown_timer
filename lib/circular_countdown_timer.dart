@@ -274,8 +274,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
 
   @override
   Widget build(BuildContext context) {
-    return column(
-      SizedBox(
+    return SizedBox(
       width: widget.width,
       height: widget.height,
       child: AnimatedBuilder(
@@ -322,23 +321,8 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
               ),
             );
           }),
-    ),
-    widget.isTimerTextShown
-                        ? Align(
-                            //alignment: FractionalOffset.center,
-                            alignment: FractionalOffset.bottomCenter,
-                            child: Text(
-                              time,
-                              style: widget.textStyle ??
-                                  const TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.black,
-                                  ),
-                              textAlign: widget.textAlign,
-                            ),
-                          )
-                        : Container(),
-    );}
+      ),
+  }
 
 
   @override
