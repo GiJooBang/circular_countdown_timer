@@ -325,8 +325,9 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
   }*/
 
   Widget build(BuildContext context) {
-    return Column(
-        SizedBox(
+    return Scaffold(
+      child: Column(
+        children: SizedBox(
           width: widget.width,
           height: widget.height,
           child: AnimatedBuilder(
@@ -383,7 +384,8 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
             ),
           textAlign: widget.textAlign,
         ),
-      );
+      ),
+    );
   }
 
   @override
