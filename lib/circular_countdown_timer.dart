@@ -273,7 +273,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
   }
 
   @override
-  Widget build(BuildContext context) {
+  /*Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width,
       height: widget.height,
@@ -285,21 +285,6 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                 aspectRatio: 1.0,
                 child: Stack(
                   children: <Widget>[
-                    widget.isTimerTextShown
-                        ? Align(
-                            alignment: FractionalOffset.center,
-                            //alignment: FractionalOffset.bottomCenter,
-                            child: Text(
-                              time,
-                              style: widget.textStyle ??
-                                  const TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.black,
-                                  ),
-                              textAlign: widget.textAlign,
-                            ),
-                          )
-                        : Container(),
                     Positioned.fill(
                       child: CustomPaint(
                             painter: CustomTimerPainter(
@@ -316,7 +301,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                             backgroundGradient: widget.backgroundGradient),
                       ),
                     ),
-                    /*widget.isTimerTextShown
+                    widget.isTimerTextShown
                         ? Align(
                             alignment: FractionalOffset.center,
                             //alignment: FractionalOffset.bottomCenter,
@@ -330,14 +315,62 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                               textAlign: widget.textAlign,
                             ),
                           )
-                        : Container(),*/
+                        : Container(),
                   ],
                 ),
               ),
             );
           }),
     );
-  }
+  }*/
+  Widget build(BuildContext context) {
+  return SizedBox(
+    width: widget.width,
+    height: widget.height,
+    child: AspectRatio(
+      aspectRatio: 1.0,
+      child: Stack(
+        children: <Widget>[
+          Positioned.fill(
+            child: CustomPaint(
+              painter: CustomTimerPainter(
+                animation: _countDownAnimation ?? _controller,
+                fillColor: widget.fillColor,
+                fillGradient: widget.fillGradient,
+                ringColor: widget.ringColor,
+                ringGradient: widget.ringGradient,
+                strokeWidth: widget.strokeWidth,
+                strokeCap: widget.strokeCap,
+                isReverse: widget.isReverse,
+                isReverseAnimation: widget.isReverseAnimation,
+                backgroundColor: widget.backgroundColor,
+                backgroundGradient: widget.backgroundGradient,
+              ),
+            ),
+          ),
+          Align(
+            alignment: FractionalOffset.center,
+            //alignment: FractionalOffset.bottomCenter,
+            child: AnimatedBuilder(
+              animation: _controller!,
+              builder: (context, child) {
+                return Text(
+                  time,
+                  style: widget.textStyle ??
+                      const TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.black,
+                      ),
+                  textAlign: widget.textAlign,
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
 
   @override
   void dispose() {
