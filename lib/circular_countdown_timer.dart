@@ -321,7 +321,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
               ),
             );
           }),
-      ),
+      );
   }
 
 
