@@ -303,7 +303,8 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                     ),
                     widget.isTimerTextShown
                         ? Align(
-                            alignment: FractionalOffset.center,
+                            //alignment: FractionalOffset.center,
+                            alignment: FractionalOffset.bottomCenter,
                             child: Text(
                               time,
                               style: widget.textStyle ??
