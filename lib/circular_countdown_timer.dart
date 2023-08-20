@@ -301,7 +301,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                             backgroundGradient: widget.backgroundGradient),
                       ),
                     ),
-                    /*widget.isTimerTextShown
+                    widget.isTimerTextShown
                         ? Align(
                             alignment: FractionalOffset.center,
                             //alignment: FractionalOffset.bottomCenter,
@@ -315,7 +315,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                               textAlign: widget.textAlign,
                             ),
                           )
-                        : Container(),*/
+                        : Container(),
                   ],
                 ),
               ),
