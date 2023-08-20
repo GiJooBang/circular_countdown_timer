@@ -286,7 +286,22 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                 child: Stack(
                   children: <Widget>[
                     Positioned.fill(
-                      child: CustomPaint(
+                      child: widget.isTimerTextShown
+                        ? Align(
+                            alignment: FractionalOffset.center,
+                            //alignment: FractionalOffset.bottomCenter,
+                            child: Text(
+                              time,
+                              style: widget.textStyle ??
+                                  const TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                  ),
+                              textAlign: widget.textAlign,
+                            ),
+                          )
+                        : Container(),
+                      CustomPaint(
                         painter: CustomTimerPainter(
                             animation: _countDownAnimation ?? _controller,
                             fillColor: widget.fillColor,
@@ -301,10 +316,10 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                             backgroundGradient: widget.backgroundGradient),
                       ),
                     ),
-                    widget.isTimerTextShown
+                    /*widget.isTimerTextShown
                         ? Align(
-                            //alignment: FractionalOffset.center,
-                            alignment: FractionalOffset.bottomCenter,
+                            alignment: FractionalOffset.center,
+                            //alignment: FractionalOffset.bottomCenter,
                             child: Text(
                               time,
                               style: widget.textStyle ??
@@ -315,7 +330,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                               textAlign: widget.textAlign,
                             ),
                           )
-                        : Container(),
+                        : Container(),*/
                   ],
                 ),
               ),
