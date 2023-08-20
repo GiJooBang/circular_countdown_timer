@@ -326,59 +326,60 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
 
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Container(
-              width: widget.width,
-              height: widget.height,
-              child: AnimatedBuilder(
-                animation: _controller!,
-                builder: (context, child) {
-                  return Align(
-                    child: AspectRatio(
-                      aspectRatio: 1.0,
-                      child: Stack(
-                        children: <Widget>[
-                          Positioned.fill(
-                            child: CustomPaint(
-                              painter: CustomTimerPainter(
-                                animation: _countDownAnimation ?? _controller,
-                                fillColor: widget.fillColor,
-                                fillGradient: widget.fillGradient,
-                                ringColor: widget.ringColor,
-                                ringGradient: widget.ringGradient,
-                                strokeWidth: widget.strokeWidth,
-                                strokeCap: widget.strokeCap,
-                                isReverse: widget.isReverse,
-                                isReverseAnimation: widget.isReverseAnimation,
-                                backgroundColor: widget.backgroundColor,
-                                backgroundGradient: widget.backgroundGradient,
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverList(
+            delegate: SliverChildListDelegate([
+              Container(
+                width: widget.width,
+                height: widget.height,
+                child: AnimatedBuilder(
+                  animation: _controller!,
+                  builder: (context, child) {
+                    return Align(
+                      child: AspectRatio(
+                        aspectRatio: 1.0,
+                        child: Stack(
+                          children: <Widget>[
+                            Positioned.fill(
+                              child: CustomPaint(
+                                painter: CustomTimerPainter(
+                                  animation: _countDownAnimation ?? _controller,
+                                  fillColor: widget.fillColor,
+                                  fillGradient: widget.fillGradient,
+                                  ringColor: widget.ringColor,
+                                  ringGradient: widget.ringGradient,
+                                  strokeWidth: widget.strokeWidth,
+                                  strokeCap: widget.strokeCap,
+                                  isReverse: widget.isReverse,
+                                  isReverseAnimation: widget.isReverseAnimation,
+                                  backgroundColor: widget.backgroundColor,
+                                  backgroundGradient: widget.backgroundGradient,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
-            Text(
-              time,
-              style: widget.textStyle ??
-                  const TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.black,
-                  ),
-              textAlign: widget.textAlign,
-            ),
-          ],
-        ),
+              Text(
+                time,
+                style: widget.textStyle ??
+                    const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                textAlign: widget.textAlign,
+              ),
+            ]),
+          ),
+        ],
       ),
     );
   }
-
   @override
   void dispose() {
     _controller!.stop();
