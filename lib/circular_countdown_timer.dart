@@ -322,7 +322,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
               ),
             );
           }),
-    );
+    ),
     widget.isTimerTextShown
                         ? Align(
                             //alignment: FractionalOffset.center,
