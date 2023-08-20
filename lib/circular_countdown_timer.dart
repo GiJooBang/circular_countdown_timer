@@ -273,7 +273,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
   }
 
   @override
-  /*Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width,
       height: widget.height,
@@ -322,9 +322,9 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
             );
           }),
       );
-  }*/
+  }
 
-  Widget build(BuildContext context) {
+  /*Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -380,6 +380,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       ),
     );
   }
+  */
   @override
   void dispose() {
     _controller!.stop();
