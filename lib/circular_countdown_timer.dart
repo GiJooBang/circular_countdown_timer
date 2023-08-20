@@ -338,7 +338,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                             ),
                           )
                         : Container(),
-    )}
+    );}
 
 
   @override
