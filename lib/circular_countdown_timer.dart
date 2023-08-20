@@ -328,20 +328,21 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
     return Scaffold(
       body: Center(
         child: Column(
-          children: SizedBox(
-            width: widget.width,
-            height: widget.height,
-            child: AnimatedBuilder(
-              animation: _controller!,
-              builder: (context, child) {
-                return Align(
-                  child: AspectRatio(
-                    aspectRatio: 1.0,
-                    child: Stack(
-                      children: <Widget>[
-                        Positioned.fill(
-                          child: CustomPaint(
-                                painter: CustomTimerPainter(
+          children: <Widget>[
+            SizedBox(
+              width: widget.width,
+              height: widget.height,
+              child: AnimatedBuilder(
+                animation: _controller!,
+                builder: (context, child) {
+                  return Align(
+                    child: AspectRatio(
+                      aspectRatio: 1.0,
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned.fill(
+                            child: CustomPaint(
+                              painter: CustomTimerPainter(
                                 animation: _countDownAnimation ?? _controller,
                                 fillColor: widget.fillColor,
                                 fillGradient: widget.fillGradient,
@@ -352,39 +353,27 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                                 isReverse: widget.isReverse,
                                 isReverseAnimation: widget.isReverseAnimation,
                                 backgroundColor: widget.backgroundColor,
-                                backgroundGradient: widget.backgroundGradient),
+                                backgroundGradient: widget.backgroundGradient,
+                              ),
+                            ),
                           ),
-                        ),
-                        /*widget.isTimerTextShown
-                            ? Align(
-                                alignment: FractionalOffset.center,
-                                //alignment: FractionalOffset.bottomCenter,
-                                child: Text(
-                                  time,
-                                  style: widget.textStyle ??
-                                      const TextStyle(
-                                        fontSize: 16.0,
-                                        color: Colors.black,
-                                      ),
-                                  textAlign: widget.textAlign,
-                                ),
-                              )
-                            : Container(),*/
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              }),
-          ),
-          Text(
-            time,
-            style: widget.textStyle ??
-              const TextStyle(
-                fontSize: 16.0,
-                color: Colors.black,
+                  );
+                },
               ),
-            textAlign: widget.textAlign,
-          ),
+            ),
+            Text(
+              time,
+              style: widget.textStyle ??
+                  const TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.black,
+                  ),
+              textAlign: widget.textAlign,
+            ),
+          ],
         ),
       ),
     );
