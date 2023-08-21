@@ -357,18 +357,18 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       },
     );
 
-  Widget timerText = widget.isTimerTextShown
+  Widget timerText = animatedBuilder.isTimerTextShown
       ? Align(
           alignment: FractionalOffset.center,
           //alignment: FractionalOffset.bottomCenter,
           child: Text(
             time,
-            style: widget.textStyle ??
+            style: animatedBuilder.textStyle ??
                 const TextStyle(
                   fontSize: 16.0,
                   color: Colors.black,
                 ),
-            textAlign: widget.textAlign,
+            textAlign: animatedBuilder.textAlign,
           ),
         )
       : Container();
