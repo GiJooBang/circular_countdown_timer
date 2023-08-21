@@ -383,7 +383,6 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
     ),
   );
 }*/
-
   Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width,
@@ -394,9 +393,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
             return Align(
               child: AspectRatio(
                 aspectRatio: 1.0,
-                child: Stack(
-                  children: <Widget>[
-                    Column(
+                child: Column(
                       child: CustomPaint(
                             painter: CustomTimerPainter(
                             animation: _countDownAnimation ?? _controller,
@@ -411,7 +408,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                             backgroundColor: widget.backgroundColor,
                             backgroundGradient: widget.backgroundGradient),
                       ),
-                    ),
+                    
                     widget.isTimerTextShown
                         ? Align(
                             alignment: FractionalOffset.center,
@@ -427,7 +424,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                             ),
                           )
                         : Container(),
-                  ],
+                  ),
                 ),
               ),
             );
