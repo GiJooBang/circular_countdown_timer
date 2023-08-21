@@ -329,8 +329,8 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       animation: _controller!,
       builder: (context, child) {
         return Align(
-          child: AspectRatio(
-            aspectRatio: 1.0,
+          //child: AspectRatio(
+            //aspectRatio: 1.0,
             child: Stack(
               children: <Widget>[
                 Positioned.fill(
@@ -352,7 +352,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                 ),
               ],
             ),
-          ),
+          //),
         );
       },
     );
