@@ -377,7 +377,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
     width: widget.width,
     height: widget.height,
     child: Column(
-      children: [animatedBuilder,
+      children: [Expanded(child: animatedBuilder),
                  const SizedBox(height: 30),
                  timerText],
     ),
