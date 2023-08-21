@@ -411,7 +411,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                       backgroundGradient: widget.backgroundGradient,
                     ),
                   ),
-                ),
+                ),),
                 if (widget.isTimerTextShown)
                   const SizedBox(height: 8), // Add spacing between CustomPaint and Text
                 if (widget.isTimerTextShown)
@@ -423,7 +423,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                           color: Colors.black,
                         ),
                     textAlign: widget.textAlign,
-                  ),),
+                  ),
               ],
             );
           }),
