@@ -391,41 +391,41 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
           animation: _controller!,
           builder: (context, child) {
             return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            AspectRatio(
-              aspectRatio: 1.0,
-              child: CustomPaint(
-                painter: CustomTimerPainter(
-                  animation: _countDownAnimation ?? _controller,
-                  fillColor: widget.fillColor,
-                  fillGradient: widget.fillGradient,
-                  ringColor: widget.ringColor,
-                  ringGradient: widget.ringGradient,
-                  strokeWidth: widget.strokeWidth,
-                  strokeCap: widget.strokeCap,
-                  isReverse: widget.isReverse,
-                  isReverseAnimation: widget.isReverseAnimation,
-                  backgroundColor: widget.backgroundColor,
-                  backgroundGradient: widget.backgroundGradient,
-                ),
-              ),
-            ),
-            if (widget.isTimerTextShown)
-              const SizedBox(height: 8), // Add spacing between CustomPaint and Text
-            if (widget.isTimerTextShown)
-              Text(
-                time,
-                style: widget.textStyle ??
-                    const TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.black,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              Expanded(children: <Widget>[
+                AspectRatio(
+                  aspectRatio: 1.0,
+                  child: CustomPaint(
+                    painter: CustomTimerPainter(
+                      animation: _countDownAnimation ?? _controller,
+                      fillColor: widget.fillColor,
+                      fillGradient: widget.fillGradient,
+                      ringColor: widget.ringColor,
+                      ringGradient: widget.ringGradient,
+                      strokeWidth: widget.strokeWidth,
+                      strokeCap: widget.strokeCap,
+                      isReverse: widget.isReverse,
+                      isReverseAnimation: widget.isReverseAnimation,
+                      backgroundColor: widget.backgroundColor,
+                      backgroundGradient: widget.backgroundGradient,
                     ),
-                textAlign: widget.textAlign,
-              ),
-          ],
-        );
+                  ),
+                ),
+                if (widget.isTimerTextShown)
+                  const SizedBox(height: 8), // Add spacing between CustomPaint and Text
+                if (widget.isTimerTextShown)
+                  Text(
+                    time,
+                    style: widget.textStyle ??
+                        const TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
+                        ),
+                    textAlign: widget.textAlign,
+                  ),
+              ],),
+            );
           }),
       );
   }
