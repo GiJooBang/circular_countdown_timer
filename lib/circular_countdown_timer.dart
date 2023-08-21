@@ -360,7 +360,6 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
   Widget timerText = widget.isTimerTextShown
       ? Align(
           alignment: FractionalOffset.center,
-          //alignment: FractionalOffset.bottomCenter,
           child: Text(
             time,
             style: widget.textStyle ??
@@ -383,6 +382,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
     ),
   );
 }*/
+
   Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width,
@@ -390,62 +390,42 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       child: AnimatedBuilder(
           animation: _controller!,
           builder: (context, child) {
-            return Align(
-              Column(children: [AspectRatio(
-                aspectRatio: 1.0,
-                child: Stack(
-                  children: <Widget>[
-                    Positioned.fill(
-                      child: CustomPaint(
-                            painter: CustomTimerPainter(
-                            animation: _countDownAnimation ?? _controller,
-                            fillColor: widget.fillColor,
-                            fillGradient: widget.fillGradient,
-                            ringColor: widget.ringColor,
-                            ringGradient: widget.ringGradient,
-                            strokeWidth: widget.strokeWidth,
-                            strokeCap: widget.strokeCap,
-                            isReverse: widget.isReverse,
-                            isReverseAnimation: widget.isReverseAnimation,
-                            backgroundColor: widget.backgroundColor,
-                            backgroundGradient: widget.backgroundGradient),
-                      ),
-                    ),
-                    widget.isTimerTextShown
-                        ? Align(
-                            alignment: FractionalOffset.center,
-                            //alignment: FractionalOffset.bottomCenter,
-                            child: Text(
-                              time,
-                              style: widget.textStyle ??
-                                  const TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.black,
-                                  ),
-                              textAlign: widget.textAlign,
-                            ),
-                          )
-                        : Container(),
-                  ],
+            return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            AspectRatio(
+              aspectRatio: 1.0,
+              child: CustomPaint(
+                painter: CustomTimerPainter(
+                  animation: _countDownAnimation ?? _controller,
+                  fillColor: widget.fillColor,
+                  fillGradient: widget.fillGradient,
+                  ringColor: widget.ringColor,
+                  ringGradient: widget.ringGradient,
+                  strokeWidth: widget.strokeWidth,
+                  strokeCap: widget.strokeCap,
+                  isReverse: widget.isReverse,
+                  isReverseAnimation: widget.isReverseAnimation,
+                  backgroundColor: widget.backgroundColor,
+                  backgroundGradient: widget.backgroundGradient,
                 ),
               ),
-            widget.isTimerTextShown
-                        ? Align(
-                            alignment: FractionalOffset.center,
-                            //alignment: FractionalOffset.bottomCenter,
-                            child: Text(
-                              time,
-                              style: widget.textStyle ??
-                                  const TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.black,
-                                  ),
-                              textAlign: widget.textAlign,
-                            ),
-                          )
-                        : Container(),  
-            ]),
-            );
+            ),
+            if (widget.isTimerTextShown)
+              const SizedBox(height: 8), // Add spacing between CustomPaint and Text
+            if (widget.isTimerTextShown)
+              Text(
+                time,
+                style: widget.textStyle ??
+                    const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                textAlign: widget.textAlign,
+              ),
+          ],
+        );
           }),
       );
   }
