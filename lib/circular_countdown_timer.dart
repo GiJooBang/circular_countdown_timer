@@ -273,7 +273,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
   }
 
   @override
-  Widget build(BuildContext context) {
+  */Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width,
       height: widget.height,
@@ -322,65 +322,66 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
             );
           }),
       );
-  }
+  }*/
 
-  /*Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildListDelegate([
-              Container(
-                width: widget.width,
-                height: widget.height,
-                child: AnimatedBuilder(
-                  animation: _controller!,
-                  builder: (context, child) {
-                    return Align(
-                      child: AspectRatio(
-                        aspectRatio: 1.0,
-                        child: Stack(
-                          children: <Widget>[
-                            Positioned.fill(
-                              child: CustomPaint(
-                                painter: CustomTimerPainter(
-                                  animation: _countDownAnimation ?? _controller,
-                                  fillColor: widget.fillColor,
-                                  fillGradient: widget.fillGradient,
-                                  ringColor: widget.ringColor,
-                                  ringGradient: widget.ringGradient,
-                                  strokeWidth: widget.strokeWidth,
-                                  strokeCap: widget.strokeCap,
-                                  isReverse: widget.isReverse,
-                                  isReverseAnimation: widget.isReverseAnimation,
-                                  backgroundColor: widget.backgroundColor,
-                                  backgroundGradient: widget.backgroundGradient,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Text(
-                time,
-                style: widget.textStyle ??
-                    const TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.black,
+  Widget build(BuildContext context) {
+    Widget animatedBuilder = AnimatedBuilder(
+      animation: _controller!,
+      builder: (context, child) {
+        return Align(
+          child: AspectRatio(
+            aspectRatio: 1.0,
+            child: Stack(
+              children: <Widget>[
+                Positioned.fill(
+                  child: CustomPaint(
+                    painter: CustomTimerPainter(
+                      animation: _countDownAnimation ?? _controller,
+                      fillColor: widget.fillColor,
+                      fillGradient: widget.fillGradient,
+                      ringColor: widget.ringColor,
+                      ringGradient: widget.ringGradient,
+                      strokeWidth: widget.strokeWidth,
+                      strokeCap: widget.strokeCap,
+                      isReverse: widget.isReverse,
+                      isReverseAnimation: widget.isReverseAnimation,
+                      backgroundColor: widget.backgroundColor,
+                      backgroundGradient: widget.backgroundGradient,
                     ),
-                textAlign: widget.textAlign,
-              ),
-            ]),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ],
-      ),
+        );
+      },
     );
-  }
-  */
+
+  Widget timerText = widget.isTimerTextShown
+      ? Align(
+          alignment: FractionalOffset.center,
+          //alignment: FractionalOffset.bottomCenter,
+          child: Text(
+            time,
+            style: widget.textStyle ??
+                const TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.black,
+                ),
+            textAlign: widget.textAlign,
+          ),
+        )
+      : Container();
+
+  return SizedBox(
+    width: widget.width,
+    height: widget.height,
+    child: Column(
+      children: [animatedBuilder, timerText],
+    ),
+  );
+}
+  
   @override
   void dispose() {
     _controller!.stop();
