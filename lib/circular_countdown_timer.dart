@@ -324,7 +324,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       );
   }*/
 
-  Widget build(BuildContext context) {
+  /*Widget build(BuildContext context) {
     Widget animatedBuilder = AnimatedBuilder(
       animation: _controller!,
       builder: (context, child) {
@@ -357,18 +357,18 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       },
     );
 
-  Widget timerText = animatedBuilder.isTimerTextShown
+  Widget timerText = widget.isTimerTextShown
       ? Align(
           alignment: FractionalOffset.center,
           //alignment: FractionalOffset.bottomCenter,
           child: Text(
             time,
-            style: animatedBuilder.textStyle ??
+            style: widget.textStyle ??
                 const TextStyle(
                   fontSize: 16.0,
                   color: Colors.black,
                 ),
-            textAlign: animatedBuilder.textAlign,
+            textAlign: widget.textAlign,
           ),
         )
       : Container();
@@ -382,7 +382,58 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                  timerText],
     ),
   );
-}
+}*/
+
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: widget.width,
+      height: widget.height,
+      child: AnimatedBuilder(
+          animation: _controller!,
+          builder: (context, child) {
+            return Align(
+              child: AspectRatio(
+                aspectRatio: 1.0,
+                child: Stack(
+                  children: <Widget>[
+                    
+                      child: CustomPaint(
+                            painter: CustomTimerPainter(
+                            animation: _countDownAnimation ?? _controller,
+                            fillColor: widget.fillColor,
+                            fillGradient: widget.fillGradient,
+                            ringColor: widget.ringColor,
+                            ringGradient: widget.ringGradient,
+                            strokeWidth: widget.strokeWidth,
+                            strokeCap: widget.strokeCap,
+                            isReverse: widget.isReverse,
+                            isReverseAnimation: widget.isReverseAnimation,
+                            backgroundColor: widget.backgroundColor,
+                            backgroundGradient: widget.backgroundGradient),
+                      ),
+                    ),
+                    widget.isTimerTextShown
+                        ? Align(
+                            alignment: FractionalOffset.center,
+                            //alignment: FractionalOffset.bottomCenter,
+                            child: Text(
+                              time,
+                              style: widget.textStyle ??
+                                  const TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                  ),
+                              textAlign: widget.textAlign,
+                            ),
+                          )
+                        : Container(),
+                  ],
+                ),
+              ),
+            );
+          }),
+      );
+  }
   
   @override
   void dispose() {
