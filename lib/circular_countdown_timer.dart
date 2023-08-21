@@ -411,7 +411,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                             backgroundColor: widget.backgroundColor,
                             backgroundGradient: widget.backgroundGradient),
                       ),
-                    ),
+                    
                     widget.isTimerTextShown
                         ? Align(
                             alignment: FractionalOffset.center,
