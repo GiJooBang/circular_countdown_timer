@@ -396,7 +396,6 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    //Positioned.fill(
                       CustomPaint(
                             painter: CustomTimerPainter(
                             animation: _countDownAnimation ?? _controller,
@@ -411,8 +410,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                             backgroundColor: widget.backgroundColor,
                             backgroundGradient: widget.backgroundGradient),
                       ),
-                    //),
-                    widget.isTimerTextShown
+                      /*widget.isTimerTextShown
                         ? Align(
                             alignment: FractionalOffset.center,
                             //alignment: FractionalOffset.bottomCenter,
@@ -426,7 +424,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                               textAlign: widget.textAlign,
                             ),
                           )
-                        : Container(),
+                        : Container(),*/
                   ],
                 ),
               ),
