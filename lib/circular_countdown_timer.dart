@@ -393,10 +393,10 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              Expanded(children: <Widget>[
+              children: <Widget>[
                 AspectRatio(
                   aspectRatio: 1.0,
-                  child: CustomPaint(
+                  Expanded(child: CustomPaint(
                     painter: CustomTimerPainter(
                       animation: _countDownAnimation ?? _controller,
                       fillColor: widget.fillColor,
@@ -411,7 +411,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                       backgroundGradient: widget.backgroundGradient,
                     ),
                   ),
-                ),
+                ),),
                 if (widget.isTimerTextShown)
                   const SizedBox(height: 8), // Add spacing between CustomPaint and Text
                 if (widget.isTimerTextShown)
@@ -424,7 +424,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                         ),
                     textAlign: widget.textAlign,
                   ),
-              ],),
+              ],
             );
           }),
       );
