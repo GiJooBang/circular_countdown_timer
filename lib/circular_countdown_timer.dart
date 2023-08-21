@@ -273,7 +273,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
   }
 
   @override
-  */Widget build(BuildContext context) {
+  /*Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width,
       height: widget.height,
