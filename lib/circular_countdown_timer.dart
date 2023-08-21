@@ -391,12 +391,12 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
           animation: _controller!,
           builder: (context, child) {
             return Align(
-              child: AspectRatio(
+              Column(children: [AspectRatio(
                 aspectRatio: 1.0,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: Stack(
                   children: <Widget>[
-                      CustomPaint(
+                    Positioned.fill(
+                      child: CustomPaint(
                             painter: CustomTimerPainter(
                             animation: _countDownAnimation ?? _controller,
                             fillColor: widget.fillColor,
@@ -410,7 +410,8 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                             backgroundColor: widget.backgroundColor,
                             backgroundGradient: widget.backgroundGradient),
                       ),
-                      /*widget.isTimerTextShown
+                    ),
+                    widget.isTimerTextShown
                         ? Align(
                             alignment: FractionalOffset.center,
                             //alignment: FractionalOffset.bottomCenter,
@@ -424,10 +425,26 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                               textAlign: widget.textAlign,
                             ),
                           )
-                        : Container(),*/
+                        : Container(),
                   ],
                 ),
               ),
+            widget.isTimerTextShown
+                        ? Align(
+                            alignment: FractionalOffset.center,
+                            //alignment: FractionalOffset.bottomCenter,
+                            child: Text(
+                              time,
+                              style: widget.textStyle ??
+                                  const TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                  ),
+                              textAlign: widget.textAlign,
+                            ),
+                          )
+                        : Container(),  
+            ]),
             );
           }),
       );
