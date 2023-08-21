@@ -394,6 +394,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
               child: AspectRatio(
                 aspectRatio: 1.0,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Positioned.fill(
                       child: CustomPaint(
