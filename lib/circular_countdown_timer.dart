@@ -355,11 +355,11 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                     ),
                   ),
                 ),
-                //const SizedBox(
-                //  height: 8
-                //),
-                if (widget.isTimerTextShown)
-                  const SizedBox(height: 30), // Add spacing between CustomPaint and Text
+                const SizedBox(
+                  height: 30
+                ),
+                //if (widget.isTimerTextShown)
+                //  const SizedBox(height: 30), // Add spacing between CustomPaint and Text
                 if (widget.isTimerTextShown)
                   Text(
                     time,
