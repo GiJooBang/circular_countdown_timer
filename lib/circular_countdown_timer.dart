@@ -356,7 +356,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                   ),
                 ),
                 const SizedBox(
-                  height: 30
+                  height: 10
                 ),
                 //if (widget.isTimerTextShown)
                 //  const SizedBox(height: 30), // Add spacing between CustomPaint and Text
