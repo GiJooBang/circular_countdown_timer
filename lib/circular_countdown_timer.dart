@@ -391,7 +391,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
               TextField(
                 keyboardType: TextInputType.number,
                 onChanged: (value) {
-
+                  newValue = value;
                 },
               ),
             ],
@@ -401,6 +401,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
               child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop(int.tryParse(newValue));
+                _controller?.forward();
               },
             ),
             TextButton(
