@@ -356,21 +356,66 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                   ),
                 ),
                 if (widget.isTimerTextShown)
-                  Text(
-                    time,
-                    style: widget.textStyle ??
+                  GestureDetector(
+                    onTap: () {
+                      _showDurationInputDialog();
+                    },
+                    child: Text(
+                      time,
+                      style: widget.textStyle ??
                         const TextStyle(
                           fontSize: 16.0,
                           color: Colors.black,
                         ),
                     textAlign: widget.textAlign,
                   ),
+                ),
               ],
             );
-          }),
+          },
+        ),
       );
   }
-  
+
+  void _showDurationInputDialog() async {
+    int? newDuration = await showDialog<int>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Set New Duration'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text('Enter new duration in seconds:'),
+              TextField(
+                keyboardType: TextInputType.number,
+                onCahgned: (value) {
+
+                },
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop(int.tryParse(newValue));
+              },
+            ),
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+    if (newDuration != null) {
+      widget.controller?.restart(duration: newDuration);
+    }
+  }
   @override
   void dispose() {
     _controller!.stop();
