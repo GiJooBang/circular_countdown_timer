@@ -110,7 +110,7 @@ class CircularCountDownTimer extends StatefulWidget {
     this.textAlign = TextAlign.left,
     super.key,
     this.isTimerTextShown = true,
-    this.autoStart = true,
+    this.autoStart = false,
     this.textFormat,
     this.controller,
   }) : assert(initialDuration <= duration);
