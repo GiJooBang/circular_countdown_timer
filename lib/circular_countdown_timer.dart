@@ -401,7 +401,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
               child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop(int.tryParse(newValue));
-                //_controller?.forward();
+                _controller?.forward();
               },
             ),
             TextButton(
