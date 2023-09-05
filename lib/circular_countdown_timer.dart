@@ -378,6 +378,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
   }
 
   void _showDurationInputDialog() async {
+    String newValue = "";
     int? newDuration = await showDialog<int>(
       context: context,
       builder: (BuildContext context) {
@@ -389,7 +390,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
               Text('Enter new duration in seconds:'),
               TextField(
                 keyboardType: TextInputType.number,
-                onCahgned: (value) {
+                onChanged: (value) {
 
                 },
               ),
