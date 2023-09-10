@@ -110,7 +110,7 @@ class CircularCountDownTimer extends StatefulWidget {
     this.textAlign = TextAlign.left,
     super.key,
     this.isTimerTextShown = true,
-    this.autoStart = false, //수정
+    this.autoStart = true,
     this.textFormat,
     this.controller,
   }) : assert(initialDuration <= duration);
@@ -401,7 +401,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
               child: Text('확인'),
               onPressed: () {
                 Navigator.of(context).pop(int.tryParse(newValue));
-                //_controller?.forward();
+                _controller?.forward();
               },
             ),
             TextButton(
@@ -416,11 +416,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
     );
     if (newDuration != null) {
       //widget.controller?.restart(duration: newDuration);
-      super.initState();
-      _controller = AnimationController(
-        vsync: this,
-        duration: Duration(seconds: newDuration),
-      );
+      widget.duration = newDuration;
     }
   }
   @override
