@@ -383,11 +383,11 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Set New Duration'),
+          title: Text('목표 시간 설정'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text('Enter new duration in seconds:'),
+              Text('목표 시간 (초):'),
               TextField(
                 keyboardType: TextInputType.number,
                 onChanged: (value) {
@@ -398,14 +398,14 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('OK'),
+              child: Text('확인'),
               onPressed: () {
                 Navigator.of(context).pop(int.tryParse(newValue));
-                _controller?.forward();
+                //_controller?.forward();
               },
             ),
             TextButton(
-              child: Text('Cancel'),
+              child: Text('취소'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
