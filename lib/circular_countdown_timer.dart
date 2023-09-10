@@ -379,7 +379,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
 
   void _showDurationInputDialog() async {
     String newValue = "";
-    final int _duration = 0;
+    int _duration = 0;
     int? newDuration = await showDialog<int>(
       context: context,
       builder: (BuildContext context) {
