@@ -379,7 +379,6 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
 
   void _showDurationInputDialog() async {
     String newValue = "";
-    int _duration = 0;
     int? newDuration = await showDialog<int>(
       context: context,
       builder: (BuildContext context) {
@@ -419,7 +418,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       //widget.controller?.restart(duration: newDuration);
       _controller!.duration = Duration(seconds: newDuration);
       setState(() {
-        _duration = newDuration; // 사용자가 입력한 값으로 목표 시간 업데이트
+        //_duration = newDuration; // 사용자가 입력한 값으로 목표 시간 업데이트
       });
     }
   }
