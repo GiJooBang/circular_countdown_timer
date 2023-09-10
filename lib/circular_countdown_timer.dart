@@ -416,6 +416,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
     );
     if (newDuration != null) {
       //widget.controller?.restart(duration: newDuration);
+      Duration newDuration = Duration(seconds: newValue);
       _controller!.duration! = newDuration;
     }
   }
