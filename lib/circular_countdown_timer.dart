@@ -416,9 +416,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
     );
     if (newDuration != null) {
       _controller!.duration = Duration(seconds: newDuration);
-      setState(() {
-        _duration = newDuration; // 사용자가 입력한 값으로 목표 시간 업데이트
-      });
+      setState(() {});
     }
   }
   @override
