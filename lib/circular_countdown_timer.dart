@@ -483,7 +483,7 @@ class CountDownController {
   /// This Method Restarts the Countdown Timer,
   /// Here optional int parameter **duration** is the updated duration for countdown timer
 
-  void restart({int? duration}) {
+/*  void restart({int? duration}) {
     if (_isReverse != null && _state != null && _state?._controller != null) {
       _state?._controller!.duration = Duration(
           seconds: duration ?? _state!._controller!.duration!.inSeconds);
@@ -491,6 +491,29 @@ class CountDownController {
         _state?._controller?.reverse(from: 1);
       } else {
         _state?._controller?.forward(from: 0);
+      }
+      isStarted = true;
+      isRestarted = true;
+      isPaused = false;
+      isResumed = false;
+    }
+  }*/
+    void restart({int? duration}) {
+    if (_isReverse != null && _state != null && _state?._controller != null) {
+      _state?._controller!.duration = Duration(
+          seconds: duration ?? _state!._controller!.duration!.inSeconds);
+      if (_isReverse!) {
+        if (_state?.widget.isReverseAnimation ?? false) {
+          _state?._controller?.forward(from: 0); // Forward Animation
+        } else {
+          _state?._controller?.reverse(from: 1); // Reverse Animation
+        }
+      } else {
+        if (_state?.widget.isReverseAnimation ?? false) {
+          _state?._controller?.reverse(from: 1); // Reverse Animation
+        } else {
+          _state?._controller?.forward(from: 0); // Forward Animation
+        }
       }
       isStarted = true;
       isRestarted = true;
