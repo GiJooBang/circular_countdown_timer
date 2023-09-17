@@ -436,7 +436,7 @@ class CountDownController {
       isResumed = false,
       isRestarted = false;
   int? _initialDuration, _duration;
-  int _pausedDuration = 0;
+  int _pausedDuration = 10;
 
   /// This Method Starts the Countdown Timer
   void start() {
