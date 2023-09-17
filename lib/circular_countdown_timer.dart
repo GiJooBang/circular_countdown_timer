@@ -99,6 +99,7 @@ class CircularCountDownTimer extends StatefulWidget {
     this.ringGradient,
     this.backgroundGradient,
     this.initialDuration = 0,
+    this._pausedDuration = 0,
     this.isReverse = true,
     this.isReverseAnimation = false,
     this.onComplete,
