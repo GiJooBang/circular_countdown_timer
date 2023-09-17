@@ -523,12 +523,10 @@ class CountDownController {
   }
   void stop() {
     if (_state != null && _state?._controller != null) {
+      // 이전 지속 시간을 저장하지 않고 현재 지속 시간으로 돌아갑니다.
       _state?._controller?.stop(canceled: false);
-
-      // 이전 지속 시간으로 돌아가도록 설정
       _state?._controller?.duration =
-          Duration(seconds: _lastDuration ?? _initialDuration ?? 0);
-
+          Duration(seconds: _state!._controller!.duration!.inSeconds);
       _state?.setState(() {}); // UI를 업데이트하기 위해 setState를 호출
       isStarted = false;
       isPaused = false;
