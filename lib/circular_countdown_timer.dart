@@ -125,8 +125,6 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
   Animation<double>? _countDownAnimation;
   CountDownController? countDownController;
 
-  int _pausedDuration = 0; // 일시정지 시간을 저장하기 위한 변수
-
   String get time {
     String timeStamp = "";
     if (widget.isReverse &&
@@ -437,7 +435,8 @@ class CountDownController {
       isPaused = false,
       isResumed = false,
       isRestarted = false;
-  int? _initialDuration, _duration, _pausedDuration;
+  int? _initialDuration, _duration;
+  int _pausedDuration = 0;
 
   /// This Method Starts the Countdown Timer
   void start() {
