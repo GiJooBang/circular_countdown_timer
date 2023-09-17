@@ -498,7 +498,7 @@ class CountDownController {
       isResumed = false;
     }
   }*/
-  void restart({int? duration}) {
+  /*void restart({int? duration}) {
     if (_isReverse != null && _state != null && _state?._controller != null) {
       _state?._controller!.duration = Duration(
           seconds: duration ?? _state!._controller!.duration!.inSeconds);
@@ -520,17 +520,59 @@ class CountDownController {
       isPaused = false;
       isResumed = false;
     }
-  }
-void stop() {
-  if (_state != null && _state?._controller != null) {
-    _state?._controller?.reset(); // 애니메이션 컨트롤러 리셋
-    _state?.setState(() {}); // UI를 업데이트하기 위해 setState를 호출
-    isStarted = false;
+  }*/
+  void restart({int? duration}) {
+  if (_isReverse != null && _state != null && _state?._controller != null) {
+    if (isPaused) {
+      // 타이머가 일시정지된 경우
+      int remainingDuration = (_state!._controller!.duration!.inSeconds - _pausedDuration);
+      _state?._controller!.duration = Duration(seconds: remainingDuration);
+      if (_isReverse!) {
+        if (_state?.widget.isReverseAnimation ?? false) {
+          _state?._controller?.forward(from: 0); // Forward Animation
+        } else {
+          _state?._controller?.reverse(from: 1); // Reverse Animation
+        }
+      } else {
+        if (_state?.widget.isReverseAnimation ?? false) {
+          _state?._controller?.reverse(from: 1); // Reverse Animation
+        } else {
+          _state?._controller?.forward(from: 0); // Forward Animation
+        }
+      }
+    } else {
+      _state?._controller!.duration = Duration(
+          seconds: duration ?? _state!._controller!.duration!.inSeconds);
+      if (_isReverse!) {
+        if (_state?.widget.isReverseAnimation ?? false) {
+          _state?._controller?.forward(from: 0); // Forward Animation
+        } else {
+          _state?._controller?.reverse(from: 1); // Reverse Animation
+        }
+      } else {
+        if (_state?.widget.isReverseAnimation ?? false) {
+          _state?._controller?.reverse(from: 1); // Reverse Animation
+        } else {
+          _state?._controller?.forward(from: 0); // Forward Animation
+        }
+      }
+    }
+    isStarted = true;
+    isRestarted = true;
     isPaused = false;
     isResumed = false;
-    isRestarted = false;
+    }
   }
-}
+  void stop() {
+    if (_state != null && _state?._controller != null) {
+      _state?._controller?.reset(); // 애니메이션 컨트롤러 리셋
+      _state?.setState(() {}); // UI를 업데이트하기 위해 setState를 호출
+      isStarted = false;
+      isPaused = false;
+      isResumed = false;
+      isRestarted = false;
+    }
+  }
   /// This Method resets the Countdown Timer
   void reset() {
     if (_state != null && _state?._controller != null) {
