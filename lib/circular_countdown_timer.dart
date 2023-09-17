@@ -521,6 +521,17 @@ class CountDownController {
       isResumed = false;
     }
   }
+  void stop() {
+    if (_state != null && _state?._controller != null) {
+      _state?._controller?.stop(canceled: false);
+      _state?._controller?.duration = Duration(seconds: _initialDuration ?? 0);
+      _state?.setState(() {}); // UI를 업데이트하기 위해 setState를 호출
+      isStarted = false;
+      isPaused = false;
+      isResumed = false;
+      isRestarted = false;
+    }
+  }
 
   /// This Method resets the Countdown Timer
   void reset() {
