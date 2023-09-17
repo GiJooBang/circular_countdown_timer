@@ -99,7 +99,6 @@ class CircularCountDownTimer extends StatefulWidget {
     this.ringGradient,
     this.backgroundGradient,
     this.initialDuration = 0,
-    this._pausedDuration = 0,
     this.isReverse = true,
     this.isReverseAnimation = false,
     this.onComplete,
@@ -125,6 +124,8 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
   AnimationController? _controller;
   Animation<double>? _countDownAnimation;
   CountDownController? countDownController;
+
+  int _pausedDuration = 0; // 일시정지 시간을 저장하기 위한 변수
 
   String get time {
     String timeStamp = "";
