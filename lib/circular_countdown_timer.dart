@@ -525,7 +525,7 @@ class CountDownController {
     if (_state != null && _state?._controller != null) {
       // 이전 지속 시간을 저장하지 않고 현재 지속 시간으로 돌아갑니다.
       _state?._controller?.stop(canceled: false);
-      _state?._controller?.forward(from: 0); // 애니메이션을 처음부터 다시 시작
+      _state?._controller?.value = 0.0; // 애니메이션을 처음부터 다시 시작
       _state?._controller?.duration =
           Duration(seconds: _state!._controller!.duration!.inSeconds);
       _state?.setState(() {}); // UI를 업데이트하기 위해 setState를 호출
