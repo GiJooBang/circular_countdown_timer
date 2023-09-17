@@ -498,7 +498,7 @@ class CountDownController {
       isResumed = false;
     }
   }*/
-    void restart({int? duration}) {
+  void restart({int? duration}) {
     if (_isReverse != null && _state != null && _state?._controller != null) {
       _state?._controller!.duration = Duration(
           seconds: duration ?? _state!._controller!.duration!.inSeconds);
