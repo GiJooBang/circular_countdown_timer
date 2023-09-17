@@ -522,39 +522,40 @@ class CountDownController {
     }
   }*/
   void restart({int? duration}) {
-  if (_isReverse != null && _state != null && _state?._controller != null) {
-    if (isPaused) {
-      // 타이머가 일시정지된 경우
-      int remainingDuration = (_state!._controller!.duration!.inSeconds - _pausedDuration);
-      _state?._controller!.duration = Duration(seconds: remainingDuration);
-      if (_isReverse!) {
-        if (_state?.widget.isReverseAnimation ?? false) {
-          _state?._controller?.forward(from: 0); // Forward Animation
+    int _pausedDuration = 0;
+    if (_isReverse != null && _state != null && _state?._controller != null) {
+      if (isPaused) {
+        // 타이머가 일시정지된 경우
+        int remainingDuration = (_state!._controller!.duration!.inSeconds - _pausedDuration);
+        _state?._controller!.duration = Duration(seconds: remainingDuration);
+        if (_isReverse!) {
+          if (_state?.widget.isReverseAnimation ?? false) {
+            _state?._controller?.forward(from: 0); // Forward Animation
+          } else {
+            _state?._controller?.reverse(from: 1); // Reverse Animation
+          }
         } else {
-          _state?._controller?.reverse(from: 1); // Reverse Animation
+          if (_state?.widget.isReverseAnimation ?? false) {
+            _state?._controller?.reverse(from: 1); // Reverse Animation
+          } else {
+            _state?._controller?.forward(from: 0); // Forward Animation
+          }
         }
       } else {
-        if (_state?.widget.isReverseAnimation ?? false) {
-          _state?._controller?.reverse(from: 1); // Reverse Animation
+        _state?._controller!.duration = Duration(
+            seconds: duration ?? _state!._controller!.duration!.inSeconds);
+        if (_isReverse!) {
+          if (_state?.widget.isReverseAnimation ?? false) {
+            _state?._controller?.forward(from: 0); // Forward Animation
+          } else {
+            _state?._controller?.reverse(from: 1); // Reverse Animation
+          }
         } else {
-          _state?._controller?.forward(from: 0); // Forward Animation
-        }
-      }
-    } else {
-      _state?._controller!.duration = Duration(
-          seconds: duration ?? _state!._controller!.duration!.inSeconds);
-      if (_isReverse!) {
-        if (_state?.widget.isReverseAnimation ?? false) {
-          _state?._controller?.forward(from: 0); // Forward Animation
-        } else {
-          _state?._controller?.reverse(from: 1); // Reverse Animation
-        }
-      } else {
-        if (_state?.widget.isReverseAnimation ?? false) {
-          _state?._controller?.reverse(from: 1); // Reverse Animation
-        } else {
-          _state?._controller?.forward(from: 0); // Forward Animation
-        }
+          if (_state?.widget.isReverseAnimation ?? false) {
+            _state?._controller?.reverse(from: 1); // Reverse Animation
+          } else {
+            _state?._controller?.forward(from: 0); // Forward Animation
+          }
       }
     }
     isStarted = true;
