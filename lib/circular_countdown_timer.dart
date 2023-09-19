@@ -435,7 +435,7 @@ class CountDownController {
       isPaused = false,
       isResumed = false,
       isRestarted = false;
-  //int? _initialDuration, _duration;
+  int? _initialDuration, _duration;
   int _targetDuration = 0;
   int _pausedDuration = 0;
 
