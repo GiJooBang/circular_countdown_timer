@@ -525,9 +525,9 @@ class CountDownController {
       } else {
         if (_state?.widget.isReverseAnimation ?? false) {
           //_state?._controller?.reverse(from: _pausedDuration/_targetDuration); // Reverse Animation
-          _state?._controller?.reverse(from: 0.5); // Reverse Animation
+          _state?._controller?.reverse(from: 1); // Reverse Animation
         } else {
-          _state?._controller?.forward(from: 0); // Forward Animation
+          _state?._controller?.forward(from: 0.5); // Forward Animation
         }
       }
   
