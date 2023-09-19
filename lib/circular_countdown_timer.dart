@@ -500,29 +500,7 @@ class CountDownController {
       isResumed = false;
     }
   }*/
-  /*void restart({int? duration}) {
-    if (_isReverse != null && _state != null && _state?._controller != null) {
-      _state?._controller!.duration = Duration(
-          seconds: duration ?? _state!._controller!.duration!.inSeconds);
-      if (_isReverse!) {
-        if (_state?.widget.isReverseAnimation ?? false) {
-          _state?._controller?.forward(from: 0); // Forward Animation
-        } else {
-          _state?._controller?.reverse(from: 1); // Reverse Animation
-        }
-      } else {
-        if (_state?.widget.isReverseAnimation ?? false) {
-          _state?._controller?.reverse(from: 1); // Reverse Animation
-        } else {
-          _state?._controller?.forward(from: 0); // Forward Animation
-        }
-      }
-      isStarted = true;
-      isRestarted = true;
-      isPaused = false;
-      isResumed = false;
-    }
-  }*/
+
   void restart({int? duration}) {
     if (_isReverse != null && _state != null && _state?._controller != null) {
       if (isPaused) {
@@ -531,14 +509,14 @@ class CountDownController {
         _state?._controller!.duration = Duration(seconds: remainingDuration);
       } else {
         // 타이머가 일시정지되지 않은 경우
-        _pausedDuration = 0;
+        //_pausedDuration = 0;
         _state?._controller!.duration = Duration(
             seconds: duration ?? _state!._controller!.duration!.inSeconds);
       }
   
       if (_isReverse!) {
         if (_state?.widget.isReverseAnimation ?? false) {
-          _state?._controller?.forward(from: 0); // Forward Animation
+          _state?._controller?.forward(from: remainingDuration / _state!._controller!.duration!.inSeconds ); // Forward Animation
         } else {
           _state?._controller?.reverse(from: 1); // Reverse Animation
         }
