@@ -527,7 +527,7 @@ class CountDownController {
     if (_isReverse != null && _state != null && _state?._controller != null) {
       if (isPaused) {
         // 타이머가 일시정지된 경우
-        int remainingDuration = pausedDuration;
+        int remainingDuration = _pausedDuration;
         _state?._controller!.duration = Duration(seconds: remainingDuration);
       } else {
         // 타이머가 일시정지되지 않은 경우
