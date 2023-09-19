@@ -377,7 +377,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       );
   }
 
-  /*void _showDurationInputDialog() async {
+  void _showDurationInputDialog() async {
     String newValue = "";
     int? newDuration = await showDialog<int>(
       context: context,
@@ -418,7 +418,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       _controller!.duration = Duration(seconds: newDuration);
       setState(() {});
     }
-  }*/
+  }
   @override
   void dispose() {
     _controller!.stop();
