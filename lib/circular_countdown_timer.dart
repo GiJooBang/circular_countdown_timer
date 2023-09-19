@@ -486,7 +486,7 @@ class CountDownController {
   /// This Method Restarts the Countdown Timer,
   /// Here optional int parameter **duration** is the updated duration for countdown timer
 
-/*  void restart({int? duration}) {
+  void restart({int? duration}) {
     if (_isReverse != null && _state != null && _state?._controller != null) {
       _state?._controller!.duration = Duration(
           seconds: duration ?? _state!._controller!.duration!.inSeconds);
@@ -500,42 +500,8 @@ class CountDownController {
       isPaused = false;
       isResumed = false;
     }
-  }*/
-
-  void restart({int? duration}) {
-    int _targetDuration = _state!._controller!.duration!.inSeconds;
-    if (_isReverse != null && _state != null && _state?._controller != null) {
-      if (isPaused) {
-        // 타이머가 일시정지된 경우
-        int remainingDuration = _pausedDuration;
-        _state?._controller!.duration = Duration(seconds: remainingDuration);
-      } else {
-        // 타이머가 일시정지되지 않은 경우
-        //_pausedDuration = 0;
-        _state?._controller!.duration = Duration(
-            seconds: duration ?? _state!._controller!.duration!.inSeconds);
-      }
-  
-      if (_isReverse!) {
-        if (_state?.widget.isReverseAnimation ?? false) {
-          _state?._controller?.forward(from: 0); // Forward Animation
-        } else {
-          _state?._controller?.reverse(from: 1); // Reverse Animation
-        }
-      } else {
-        if (_state?.widget.isReverseAnimation ?? false) {
-          _state?._controller?.reverse(from: 1); // Reverse Animation
-        } else {
-          _state?._controller?.forward(from: _pausedDuration/_targetDuration); // Forward Animation
-        }
-      }
-  
-      isStarted = true;
-      isRestarted = true;
-      isPaused = false;
-      isResumed = false;
-    }
   }
+  
   void stop() {
     if (_state != null && _state?._controller != null) {
       _state?._controller?.reset(); // 애니메이션 컨트롤러 리셋
