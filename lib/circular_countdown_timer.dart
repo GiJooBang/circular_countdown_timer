@@ -418,14 +418,14 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       _controller!.duration = Duration(seconds: newDuration);
       setState(() {});
     }
-  }
+  }*/
   @override
   void dispose() {
     _controller!.stop();
     _controller!.dispose();
     super.dispose();
   }
-}*/
+}
 void _showDurationInputDialog() async {
   String newValue = "";
   int? newDuration = await showCupertinoDialog<int>(
