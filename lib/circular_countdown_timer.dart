@@ -377,7 +377,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       );
   }
 
-  void _showDurationInputDialog() async {
+  /*void _showDurationInputDialog() async {
     String newValue = "";
     int? newDuration = await showDialog<int>(
       context: context,
@@ -425,8 +425,49 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
     _controller!.dispose();
     super.dispose();
   }
+}*/
+void _showDurationInputDialog() async {
+  String newValue = "";
+  int? newDuration = await showCupertinoDialog<int>(
+    context: context,
+    builder: (BuildContext context) {
+      return CupertinoAlertDialog(
+        title: Text('목표 시간 설정'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text('목표 시간 (초):'),
+            CupertinoTextField(
+              keyboardType: TextInputType.number,
+              onChanged: (value) {
+                newValue = value;
+              },
+            ),
+          ],
+        ),
+        actions: <Widget>[
+          CupertinoDialogAction(
+            child: Text('확인'),
+            onPressed: () {
+              Navigator.of(context).pop(int.tryParse(newValue));
+              _controller?.forward();
+            },
+          ),
+          CupertinoDialogAction(
+            child: Text('취소'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+  if (newDuration != null) {
+    _controller!.duration = Duration(seconds: newDuration);
+    setState(() {});
+  }
 }
-
 /// Controls (i.e Start, Pause, Resume, Restart) the Countdown Timer.
 class CountDownController {
   CircularCountDownTimerState? _state;
