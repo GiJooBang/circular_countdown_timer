@@ -435,7 +435,8 @@ class CountDownController {
       isPaused = false,
       isResumed = false,
       isRestarted = false;
-  int _initialDuration, _duration;
+  //int? _initialDuration, _duration;
+  int _targetDuration = 0;
   int _pausedDuration = 0;
 
   /// This Method Starts the Countdown Timer
@@ -502,6 +503,7 @@ class CountDownController {
   }*/
 
   void restart({int? duration}) {
+    int _targetDuration = _state!._controller!.duration!.inSeconds;
     if (_isReverse != null && _state != null && _state?._controller != null) {
       if (isPaused) {
         // 타이머가 일시정지된 경우
