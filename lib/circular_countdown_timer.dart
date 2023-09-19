@@ -518,16 +518,15 @@ class CountDownController {
   
       if (_isReverse!) {
         if (_state?.widget.isReverseAnimation ?? false) {
-          _state?._controller?.forward(from: _pausedDuration/_targetDuration ); // Forward Animation
+          _state?._controller?.forward(from: 0); // Forward Animation
         } else {
           _state?._controller?.reverse(from: 1); // Reverse Animation
         }
       } else {
         if (_state?.widget.isReverseAnimation ?? false) {
-          //_state?._controller?.reverse(from: _pausedDuration/_targetDuration); // Reverse Animation
           _state?._controller?.reverse(from: 1); // Reverse Animation
         } else {
-          _state?._controller?.forward(from: 0.5); // Forward Animation
+          _state?._controller?.forward(from: _pausedDuration/_targetDuration); // Forward Animation
         }
       }
   
