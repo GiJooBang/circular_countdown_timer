@@ -436,7 +436,7 @@ class CountDownController {
       isResumed = false,
       isRestarted = false;
   int? _initialDuration, _duration;
-  int _pausedDuration = 10;
+  int _pausedDuration = 0;
 
   /// This Method Starts the Countdown Timer
   void start() {
@@ -460,6 +460,7 @@ class CountDownController {
   /// This Method Pauses the Countdown Timer
   void pause() {
     if (_state != null && _state?._controller != null) {
+      _pausedDuration = (_state!._controller!.duration!.inSeconds * _state!._controller!.value).toInt(); // 일시정지된 순간까지의 시간 저장
       _state?._controller?.stop(canceled: false);
       isPaused = true;
       isRestarted = false;
